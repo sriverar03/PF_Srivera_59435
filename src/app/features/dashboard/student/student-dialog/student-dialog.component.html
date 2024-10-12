@@ -1,0 +1,55 @@
+<h1 mat-dialog-title>Crear Estudiante</h1>
+<div mat-dialog-content>
+    <form class="grid formgrid" [formGroup]="EstudianteForm">
+
+        <div class="col-12 field">
+          <mat-form-field class="w-full">
+            <mat-label appFontSize>Nombre</mat-label>
+            <input
+              [formControl]="nombreControl"
+              type="text"
+              matInput
+            >
+            <mat-error *ngFor="let error of nombreControl.errors | keyvalue">{{ error | controlErrorMessages  }}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-12 field">
+          <mat-form-field class="w-full">
+            <mat-label >Apellido Paterno</mat-label>
+            <input
+              [formControl]="paternoControl"
+              type="text"
+              matInput
+            >
+            <mat-error *ngFor="let error of paternoControl.errors | keyvalue">{{ error | controlErrorMessages  }}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-12 field">
+          <mat-form-field class="w-full">
+            <mat-label >Apellido Materno</mat-label>
+            <input
+              [formControl]="maternoControl"
+              type="text"
+              matInput
+            >
+            <mat-error *ngFor="let error of maternoControl.errors | keyvalue">{{ error | controlErrorMessages  }}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-12 field">
+            <mat-form-field class="w-full">
+              <mat-label >Email</mat-label>
+              <input
+                [formControl]="emailControl"
+                type="email"
+                matInput
+              >
+              <mat-error *ngFor="let error of maternoControl.errors | keyvalue">{{ error | controlErrorMessages  }}</mat-error>
+            </mat-form-field>
+          </div>
+    
+      </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-flat-button mat-dialog-close>Cancelar</button>
+    <button mat-flat-button (click)="onSave()">Guardar</button>
+</div>

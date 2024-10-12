@@ -1,0 +1,14 @@
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side" [opened]="true" >
+      <p appTitles>Menu</p>
+    
+      <button (click)="showFiller = !showFiller" mat-raised-button>
+        Estudiantes
+      </button>
+    </mat-drawer>
+  
+    <div class="example-sidenav-content">
+      <app-student />
+    </div>
+  
+  </mat-drawer-container>
