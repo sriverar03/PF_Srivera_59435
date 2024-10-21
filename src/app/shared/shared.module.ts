@@ -11,6 +11,7 @@ import { MatTableModule } from '@angular/material/table';
 import { StudentFullNamePipe } from './pipes/student-full-name.pipe';
 import { TitlesDirective } from './directivs/titles.directive';
 import { ControlErrorMessagesPipe } from './pipes/control-error-messages.pipe';
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ControlErrorMessagesPipe } from './pipes/control-error-messages.pipe';
     MatButtonModule,
     MatDialogModule,
     MatInputModule,
-    MatTableModule,
+    MatTableModule, 
+    MatListModule,       
     StudentFullNamePipe,
     ControlErrorMessagesPipe,
     TitlesDirective,

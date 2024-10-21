@@ -1,14 +1,36 @@
 <mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="side" [opened]="true" >
-      <p appTitles>Menu</p>
-    
-      <button (click)="showFiller = !showFiller" mat-raised-button>
-        Estudiantes
-      </button>
-    </mat-drawer>
-  
-    <div class="example-sidenav-content">
-      <app-student />
-    </div>
-  
-  </mat-drawer-container>
+  <mat-drawer #drawer class="example-sidenav" mode="side" [opened]="true">
+    <mat-list>
+      <h3 mat-subheader>Menú</h3>
+      <mat-list-item>
+        <a class="menu-link" routerLink="/estudiantes"
+          ><mat-icon class="icon-margen">home</mat-icon>Inicio</a
+        >
+      </mat-list-item>
+      <mat-list-item>
+        <a class="menu-link" routerLink="/student"
+          ><mat-icon class="icon-margen">perm_identity</mat-icon>Estudiantes</a
+        >
+      </mat-list-item>
+      <mat-list-item>
+        <a class="menu-link" routerLink="/cursos"
+          ><mat-icon class="icon-margen">category</mat-icon>Cursos</a
+        >
+      </mat-list-item>
+      <mat-list-item>
+        <a class="menu-link" routerLink="/asignaturas"
+          ><mat-icon class="icon-margen">book</mat-icon>Asignaturas</a
+        >
+      </mat-list-item>
+      <mat-list-item>
+        <a class="menu-link" routerLink="/"
+          ><mat-icon class="icon-margen">exit_to_app</mat-icon>Cerrar Sesion</a
+        >
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>
