@@ -11,7 +11,7 @@
   }
   
   .example-sidenav {
-    padding: 0px;
+    padding: 1px;
     width: 270px;
   }
 
@@ -34,7 +34,7 @@
   }
   
   .menu-link:hover {
-    background-color: #303f9f; /* Cambia el color de fondo al pasar el ratón */
+    background-color: #76777c; /* Cambia el color de fondo al pasar el ratón */
   }
 
   .icon-margen{
@@ -46,3 +46,21 @@
     padding-left: 4px;
     padding-right: 16px;
   }
+
+  .item-con-linea {
+    position: relative; /* Para poder posicionar la línea correctamente */
+    transition: background-color 0.3s;
+  }
+  
+  .item-con-linea::after {
+    content: '';
+    position: absolute;
+    left: 0; /* Posiciona la línea a la derecha */
+    top: 1%; /* Ajusta la posición vertical según sea necesario */
+    height: 100%; /* Ajusta la altura de la línea */
+    width: 7px; /* Grosor de la línea */
+    background-color:rgb(243, 126, 17); /* Color de la línea */
+  }
+
+
+  

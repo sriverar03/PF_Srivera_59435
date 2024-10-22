@@ -28,10 +28,10 @@ const routes: Routes = [
     loadChildren:() => DashboardModule, 
     
   }, 
-  /*{
+  {
     path:'**',
-    redirectTo:'auth'
-  },*/
+    redirectTo:'auth/login'
+  },
 ];
 
 @NgModule({
