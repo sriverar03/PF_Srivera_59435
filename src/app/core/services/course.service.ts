@@ -43,8 +43,10 @@ export class CourseService{
     }
 
     createCourse(newCourse: Course): Observable<Course> {
-        COURSES_db.push({ ...newCourse, id: (COURSES_db.length + 1).toString(), createdAt: new Date() });
-        return of(newCourse);
+        const newId = (COURSES_db.reduce((maxId, course) => Math.max(maxId, parseInt(course.id)), 0) + 1).toString();
+        const courseToAdd = { ...newCourse, id: newId, createdAt: new Date() };
+        COURSES_db.push(courseToAdd);
+        return of(courseToAdd);
     }
 
     updateCourse(updatedCourse: Course): Observable<Course | undefined> {
@@ -64,5 +66,9 @@ export class CourseService{
         }
         return of(false);
     }
+
+    generateRandomId(): string {
+        return 'id-' + Math.random().toString(36).substr(2, 9);
+      }
 
 }

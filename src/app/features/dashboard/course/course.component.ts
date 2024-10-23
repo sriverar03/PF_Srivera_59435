@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CourseService } from '../../../core/services/course.service';
 import { Course } from './models';
 import moment from 'moment';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-course',
@@ -16,7 +17,13 @@ export class CourseComponent implements OnInit {
   courses:Course[] = [];
   selectedCourse: Course | null = null;
 
-  constructor(private courseService: CourseService){}
+  courseForm:FormGroup;
+
+  constructor(private courseService: CourseService,private fb:FormBuilder){
+    this.courseForm = this.fb.group({
+      nombre: ['',Validators.required]
+    })
+  }
 
 
 
@@ -35,11 +42,17 @@ export class CourseComponent implements OnInit {
     });
   }
 
-  addCourse(nombre: string): void {
-    const newCourse: Course = { id: '', nombre, createdAt: new Date() };
-    this.courseService.createCourse(newCourse).subscribe(course => {
-      this.courses.push(course);
-    });
+  addCourse(): void {
+    if(this.courseForm.invalid){
+      this.courseForm.markAllAsTouched();
+    }else{
+      this.courseService.createCourse(this.courseForm.value).subscribe({
+        next:(newcourse) =>{
+          this.courses = [...this.courses,newcourse];
+          this.courseForm.reset();
+        }
+      })
+    }
   }
 
   updateCourse(): void {
