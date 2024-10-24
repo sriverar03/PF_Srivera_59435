@@ -1,48 +1,65 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentDialogComponent } from './student-dialog/student-dialog.component';
 import { Estudiantes } from './models';
+import { StudentService } from '../../../core/services/student.service';
 
 
 
 
-const ELEMENT_DATA: Estudiantes[] = [
-  {nombre: 'Sergio', paterno: 'Rivera', materno:'Romero',email:'srivera@gmail.com'},
-  {nombre: 'Pedro', paterno: 'Garcia', materno:'Morales',email:'pgarciam@gmail.com'},
-  {nombre: 'Trinidad', paterno: 'Rivera', materno:'Sanchez',email:'trivera@gmail.com'},
-  {nombre: 'Camilo', paterno: 'Jerez', materno:'Ahumada',email:'cmjereza@gmail.com'},
-  
- 
-];
 
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
-  styleUrl: './student.component.scss'
+  styleUrl: './student.component.scss',
+  providers:[StudentService]
 })
-export class StudentComponent {
+export class StudentComponent implements OnInit {
 
-  displayedColumns: string[] = ['nombre', 'email' ,'actions'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['id','nombre', 'email' ,'actions']; 
+  student:Estudiantes[] = [];
 
 
-  constructor(private matDialog: MatDialog){}
+  constructor(private matDialog: MatDialog,private studentservice:StudentService){}
+
+  ngOnInit(): void {
+    this.loadStudents();
+  }
+
+  loadStudents():void{
+    this.studentservice.getStudent().subscribe({
+      next: (data: Estudiantes[]) => {
+        this.student = data;
+      }
+    });
+  }
+
+  
 
   openModal(editStudent?:Estudiantes):void{
     this.matDialog.open(StudentDialogComponent,{data: editStudent},)
     .afterClosed()
     .subscribe({
-      next:(result) =>{
+      next: (result) => {
         console.log(result);
-        if(!!result){
-          this.dataSource = [...this.dataSource,{...result},]
+        if (!!result) {          
+          this.studentservice.createStudent(result).subscribe({
+            next: (newStudents) => {             
+              this.student = [...newStudents]; 
+            },            
+          });
         }
       },
     });
   }
 
-  onDelete(email:string){
-    this.dataSource = this.dataSource.filter((student => student.email !== email))
+
+
+
+  onDelete(id: string): void {   
+    this.studentservice.deleteStudent(id).subscribe(updatedStudents => {     
+      this.student = updatedStudents;
+    });
   }
 
  
