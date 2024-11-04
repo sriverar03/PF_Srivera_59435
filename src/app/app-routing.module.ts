@@ -6,6 +6,7 @@ import { LoginComponent } from './features/auth/login/login.component';
 import { RegisterComponent } from './features/auth/register/register.component';
 import { StudentComponent } from './features/dashboard/student/student.component';
 import { DashboardModule } from './features/dashboard/dashboard.module';
+import { authGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -23,7 +24,7 @@ const routes: Routes = [
     ],
   },
   {
-    path:'dashboard',
+    path:'dashboard',    
     component:DashboardComponent,  
     loadChildren:() => DashboardModule, 
     

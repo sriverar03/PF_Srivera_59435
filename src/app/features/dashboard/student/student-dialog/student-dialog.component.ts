@@ -15,7 +15,7 @@ export class StudentDialogComponent {
     nombreControl = new FormControl('', [Validators.required]);
     paternoControl = new FormControl('', [Validators.required]);
     maternoControl = new FormControl('', [Validators.required]);
-    emailControl = new FormControl('', [Validators.required]);
+    emailControl = new FormControl('', [Validators.required,Validators.email]);
   
   
     EstudianteForm = new FormGroup({

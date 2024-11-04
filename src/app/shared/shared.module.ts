@@ -12,6 +12,8 @@ import { StudentFullNamePipe } from './pipes/student-full-name.pipe';
 import { TitlesDirective } from './directivs/titles.directive';
 import { ControlErrorMessagesPipe } from './pipes/control-error-messages.pipe';
 import { MatListModule } from '@angular/material/list';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { MatListModule } from '@angular/material/list';
     MatDialogModule,
     MatInputModule,
     MatTableModule, 
-    MatListModule,       
+    MatListModule, 
+    MatFormFieldModule,         
     StudentFullNamePipe,
     ControlErrorMessagesPipe,
     TitlesDirective,

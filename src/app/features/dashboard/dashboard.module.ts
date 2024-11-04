@@ -11,6 +11,8 @@ import { CourseModule } from './course/course.module';
 import { ClasseModule } from './classe/classe.module';
 import { HomeComponent } from './home/home.component';
 import { HomeModule } from './home/home.module';
+import { UsersComponent } from './users/users.component';
+import { AuthModule } from '../auth/auth.module';
 
 
 
@@ -20,7 +22,8 @@ import { HomeModule } from './home/home.module';
   declarations: [
     DashboardComponent,
     NavbarComponent,
-    ToolbarComponent, 
+    ToolbarComponent,
+    UsersComponent, 
   ],
   imports: [
     CommonModule,
@@ -30,6 +33,7 @@ import { HomeModule } from './home/home.module';
     ClasseModule,
     HomeModule,
     SharedModule,
+    
   ],
   exports:[DashboardComponent],
 })

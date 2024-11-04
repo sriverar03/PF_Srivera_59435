@@ -6,7 +6,10 @@ import { AppComponent } from './app.component';
 import { DashboardModule } from './features/dashboard/dashboard.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AuthModule } from './features/auth/auth.module';
-import { SharedModule } from './shared/shared.module';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+
+
+
 
 @NgModule({
   declarations: [
@@ -16,11 +19,11 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     DashboardModule,
-    AuthModule,
-   
+    AuthModule,  
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),    
+    provideHttpClient(withFetch()),   
   ],
   bootstrap: [AppComponent]
 })

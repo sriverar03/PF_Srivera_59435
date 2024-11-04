@@ -1,0 +1,13 @@
+{
+    "users": [
+        {
+            "id": "1",
+            "firstName": "Sergio",
+            "lastName": "Rivera",
+            "email": "prueba@gmail.com",
+            "password": "12345",
+            "token": "abcde123kkk",
+            "cratedAt": "2024-10-24T00:14:33.140Z"
+        }
+    ]
+}
