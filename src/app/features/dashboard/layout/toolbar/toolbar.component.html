@@ -1,7 +1,7 @@
 <mat-toolbar>  
   <span class="me-2 ">Proyecto Angular</span>
   <div >
-    <p>ddd</p>
+    <p *ngIf="authUser$ | async; let user">{{user.id}}</p>
   </div>
   <span class="example-spacer"></span>
 </mat-toolbar>

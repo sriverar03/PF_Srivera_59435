@@ -5,5 +5,6 @@ export interface User{
     email: string;
     password: string;
     cratedAt: Date;
-    token: string;
+    token: string;  
+
 }

@@ -1,31 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../core/services/auth.service';
 import { User } from '../../users/models';
-import { first, Observable } from 'rxjs';
+import { filter, first, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.scss'
 })
-export class ToolbarComponent implements OnInit {
+export class ToolbarComponent{
 
-  //authUser$: Observable<User | null>;
 
-  constructor(private authService: AuthService) {
-    console.log(this.authService.authUser$);  
+  authUser$:Observable<User | null>;
+  
+  constructor(private authService: AuthService) 
+  {
+    this.authUser$ = this.authService.authUser$;
   }
+  
 
-  ngOnInit(): void {
-    /*this.authUser$.subscribe((user) => {
-      console.log(user);
-      if (user) {
-        console.log('Usuario autenticado:', user.email);
-      } else {
-        console.log('No hay usuario autenticado');
-      }
-    });*/
-  }
+  
   
   
 }
